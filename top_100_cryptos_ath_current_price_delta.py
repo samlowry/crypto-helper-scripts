@@ -37,7 +37,13 @@ def get_cryptos_data_from_coingecko():
 cryptos_data = get_cryptos_data_from_coingecko()
 
 # Print column headers
-print("Name\tSymbol\tCurrent Price\tATH\tATH Date\tDelta")
+print("Name\tSymbol\tCurrent Price\tATH\tATH Date\tDelta\tDelta (%)")
 
 for crypto in cryptos_data:
-    print(f"{crypto['name']}\t{crypto['symbol']}\t${crypto['current_price']:.2f}\t${crypto['ath']:.2f}\t{crypto['ath_date']}\t${crypto['delta']:.2f}")
+    # Calculate the percentage difference
+    if crypto['ath'] > 0:  # Prevent division by zero
+        delta_percent = ((crypto['ath'] - crypto['current_price']) / crypto['ath']) * 100
+    else:
+        delta_percent = 0  # Assign 0% if ATH is 0 to avoid division by zero error
+
+    print(f"{crypto['name']}\t{crypto['symbol']}\t${crypto['current_price']:.2f}\t${crypto['ath']:.2f}\t{crypto['ath_date']}\t${crypto['delta']:.2f}\t{delta_percent:.2f}%")
