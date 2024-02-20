@@ -42,7 +42,7 @@ print("Name\tSymbol\tCurrent Price\tATH\tATH Date\tDelta\tDelta (%)")
 for crypto in cryptos_data:
     # Calculate the percentage difference
     if crypto['ath'] > 0:  # Prevent division by zero
-        delta_percent = ((crypto['ath'] - crypto['current_price']) / crypto['ath']) * 100
+        delta_percent = ((crypto['ath'] - crypto['current_price']) / crypto['current_price']) * 100
     else:
         delta_percent = 0  # Assign 0% if ATH is 0 to avoid division by zero error
 
