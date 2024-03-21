@@ -7,7 +7,7 @@ def get_cryptos_data_from_coingecko():
     parameters = {
         'vs_currency': 'usd',
         'order': 'market_cap_desc',
-        'per_page': 100,
+        'per_page': 200,
         'page': 1,
     }
 
